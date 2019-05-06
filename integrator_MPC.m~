@@ -1,0 +1,63 @@
+function [q_opt, u_opt] = integrator_MPC(N, q0, q_goal, ts)
+%UNICYCLE_MPC Summary of this function goes here
+%   Detailed explanation goes here
+
+
+%% Dynamics
+
+dynamics = @(q, u) q + [q(2); u]*ts;
+
+
+%% Yalmip Setup
+
+q = sdpvar(2, N+1);
+u = sdpvar(1, N);
+
+%% Initial conditions
+% assign(q, q_expected);
+% assign(u, u_expected);
+
+%% MPC Constraints
+
+constraints = [];
+
+% Dynamics
+for i = 1:N
+    constraints = [constraints, ...
+        [q(:, i+1) == dynamics(q(:,i), u(:,i))]:'dynamics'];
+end
+
+% Start state
+constraints = [constraints, ...
+    [q(:,1) == q0]:'initial state'];
+
+
+% CBF
+for i = 1:N
+    constraints = [constraints, ...
+        [u(:,i) <= -abs(q(1,i) + q(2,i)) - q(2,i)]:'CBF'];
+end
+
+% Input constraints
+for i = 1:N
+    constraints = [constraints, ...
+        [abs(u(:,i)) <= 2]:'input constraints'];
+end
+
+%% MPC Cost
+R = 0.5; % Arbitrary
+
+cost = 0.5*u^2 + (q(:, i) - q_goal
+
+cost = sum(sum((q - q_expected).^2)); % + R*sum(sum((u - u_expected).^2));
+
+%% Solve
+
+options = sdpsettings('verbose', true, 'solver', 'IPOPT');
+feas = optimize(constraints, cost, options)
+
+q_opt = double(q);
+u_opt = double(u);
+
+end
+
