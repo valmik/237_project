@@ -9,7 +9,7 @@ setup_paths
 
 %% Define an arbitrary path
 
-ts = 0.01;
+ts = 0.1;
 
 t = 0:ts:2;
 u_expected = [sin(t*pi); cos(t*pi)];
@@ -27,7 +27,7 @@ plot(q_expected(1,:), q_expected(2,:))
 %% Do MPC
 
 % Time horizon
-N = 10;
+N = 30;
 
 % Pad expected path
 q_expected = [q_expected, repmat(q_expected(:,end), [1, N+1])];
@@ -56,6 +56,7 @@ for index = 1:(numel(t)-1)
 end
 
 plot(q(1,:), q(2,:), 'b')
+plot(q_expected(1,:), q_expected(2,:), 'k-')
 
 
 
