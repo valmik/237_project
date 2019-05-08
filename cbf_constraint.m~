@@ -1,0 +1,10 @@
+function cons = cbf_constraint(x, u, ts)
+    if ~any(x)
+        cons = norm(u, );
+    elseif x(1) == 0 && x(2) == 0
+        cons = Lfh2_gen(x, ts) + Lgh2_gen(x, u, ts) + h2_gen(x, ts);
+    else
+        cons = Lfh_gen(x) + Lgh_gen(x, u) + h_gen(x);
+    end
+end
+

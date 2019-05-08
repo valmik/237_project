@@ -1,0 +1,49 @@
+\documentclass{article}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{amsthm}
+\usepackage{graphicx}
+\usepackage[margin=1.0in]{geometry}
+\usepackage{fancyhdr} % for headers and footers
+\usepackage[nobreak=false]{mdframed}
+\usepackage{bm} %vectors
+\usepackage[dvipsnames]{xcolor}
+\usepackage{multicol}
+\usepackage{caption}
+\usepackage{enumitem}
+\usepackage{comment}
+\usepackage{hyperref}
+\usepackage{listings}
+\usepackage{siunitx}
+\newenvironment{greytext}{\color{Gray}}{\ignorespacesafterend}
+
+\newcommand{\volume}{\mathop{\ooalign{\hfil$V$\hfil\cr\kern0.08em--\hfil\cr}}\nolimits} % Fluid dynamics volume
+
+\newcommand{\fixthis}[1]{} %Uncomment to see if you still have things to do
+
+\definecolor{mylightgrey}{rgb}{0.9, 0.9, 0.9}
+\definecolor{mydarkyellow}{rgb}{0.7, 0.6, 0}
+\definecolor{mymidgreen}{rgb}{0.4, 0.7, 0.4}
+
+% Python
+\lstset{
+    language=Matlab,
+    backgroundcolor = \color{mylightgrey},
+    keywordstyle = \color{blue},
+    stringstyle = \color{mydarkyellow},
+    rulecolor = \color{black},
+    commentstyle = \color{mymidgreen}
+}
+
+\parindent = 0pt
+
+
+\begin{document}
+
+
+\begin{equation}
+    -\frac{50000\, v \,\left(u_{1}\,x^2+u_{1}\,y^2+u_{1}\,x^2\,\cos\left(2\,\theta \right)-u_{1}\,y^2\,\cos\left(2\,\theta \right)+2\,u_{1}\,x\,y\,\sin\left(2\,\theta \right)-u_{2}\, v \,x^2\,\sin\left(2\,\theta \right)+u_{2}\, v \,y^2\,\sin\left(2\,\theta \right)+2\,u_{2}\, v \,x\,y\,\cos\left(2\,\theta \right)\right)}{100000\,x^2+100000\,y^2+1}
+\end{equation}
+
+\end{document}
+
