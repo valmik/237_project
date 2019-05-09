@@ -65,10 +65,11 @@ end
 %%
 
 figure(1)
-plot(x(1,:), x(2,:))
+plot(x(1,:), x(2,:), cos(0:0.01:2*pi), sin(0:0.01:2*pi))
 title('X position vs Y position')
 xlabel('X, m')
 ylabel('Y, m')
+legend('Modified Trajectory', 'CBF constraint')
 
 figure(2)
 title('System state')
